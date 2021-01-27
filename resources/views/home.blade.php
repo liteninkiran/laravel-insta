@@ -14,7 +14,7 @@
 
         <div class="col-9 pt-5">
 
-            <div><h1>Innovative Analytic Solutions</h1></div>
+            <div><h1>{{ $user->name }}</h1></div>
 
             <div class="d-flex">
                 
@@ -24,29 +24,22 @@
 
             </div>
 
-            <div class="pt-4 font-weight-bold"><a href="https://kiran-anand.com" target="_blank" style="text-decoration: none;">Kiran Anand</a></div>
+            <div class="pt-4 font-weight-bold"><a href="{{ $user->profile->url }}" target="_blank" style="text-decoration: none;">{{ $user->profile->title }}</a></div>
 
-            <div>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
+            <div>{{ $user->profile->description }}</div>
 
             <div class="row pt-5">
 
                 <div class="col-4">
-                    <img src="https://www.cloudways.com/blog/wp-content/uploads/best-php-frameworks-1.jpg" class="w-100">
+                    <img src="https://www.cloudways.com/blog/wp-content/uploads/best-php-frameworks-1.jpg" class="h-25">
                 </div>
 
                 <div class="col-4">
-                    <img src="https://agilethought.com/wp-content/uploads/2018/10/power-BI.png" class="w-100">
+                    <img src="https://agilethought.com/wp-content/uploads/2018/10/power-BI.png" class="h-25">
                 </div>
 
                 <div class="col-4">
-                    <img src="https://www.scnsoft.com/blog-pictures/information-security/7-best-practices-for-database-security.png" class="w-100">
+                    <img src="https://www.scnsoft.com/blog-pictures/information-security/7-best-practices-for-database-security.png" class="h-25">
                 </div>
 
             </div>

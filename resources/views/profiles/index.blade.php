@@ -18,13 +18,14 @@
 
                 <h1>{{ $user->name }}</h1>
 
-                <a href="#">Add New Post</a>
-
+                <a href="{{ route('post.create') }}">Add New Post</a>
             </div>
+
+            <a href="{{ route('profile.edit', $user->id) }}">Edit Profile</a>
 
             <div class="d-flex">
                 
-                <div class="pr-5"><strong>153</strong> posts</div>
+                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pr-5"><strong>23k</strong> followers</div>
                 <div class="pr-5"><strong>212</strong> following</div>
 
@@ -36,17 +37,13 @@
 
             <div class="row pt-5">
 
-                <div class="col-4">
-                    <img src="https://www.cloudways.com/blog/wp-content/uploads/best-php-frameworks-1.jpg" class="h-25">
-                </div>
+                @foreach($user->posts as $post)
 
-                <div class="col-4">
-                    <img src="https://agilethought.com/wp-content/uploads/2018/10/power-BI.png" class="h-25">
-                </div>
+                    <div class="col-4 pb-4">
+                        <a href="{{ route('post.show', $post->id) }}"><img src="/storage/{{ $post->image }}" class="w-100"></a>
+                    </div>
 
-                <div class="col-4">
-                    <img src="https://www.scnsoft.com/blog-pictures/information-security/7-best-practices-for-database-security.png" class="h-25">
-                </div>
+                @endforeach
 
             </div>
 

@@ -21,6 +21,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/post/create', [PostsController::class, 'create'])->name('post.create');
-Route::post('/post', [PostsController::class, 'store']);
-Route::get('/profile/{userName}', [ProfilesController::class, 'index'])->name('profile.show');
+Route::get ('/post/create'     , [PostsController::class, 'create'])->name('post.create');
+Route::post('/post'            , [PostsController::class, 'store' ])->name('post.store' );
+Route::get ('/post/{post}'     , [PostsController::class, 'show'  ])->name('post.show'  );
+Route::get ('/post/{post}/edit', [PostsController::class, 'edit'  ])->name('post.edit'  );
+
+Route::get('/profile/{user}'     , [ProfilesController::class, 'index' ])->name('profile.show'  );
+Route::put('/profile/{user}'     , [ProfilesController::class, 'update'])->name('profile.update');
+Route::get('/profile/{user}/edit', [ProfilesController::class, 'edit'  ])->name('profile.edit'  );
+
+
+/*
+
+    Verb        Path                    Action      Route Name
+    ----------------------------------------------------------------
+    GET         /photo                  index       photo.index
+    GET         /photo/create           create      photo.create
+    POST        /photo                  store       photo.store
+    GET         /photo/{photo}          show        photo.show
+    GET         /photo/{photo}/edit     edit        photo.edit
+    PUT/PATCH   /photo/{photo}          update      photo.update
+    DELETE      /photo/{photo}          destroy     photo.destroy
+
+*/
+

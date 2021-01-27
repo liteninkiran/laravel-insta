@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="container">
-
-    <form action="{{ route('post.store') }}" enctype="multipart/form-data" method="post">
+ 
+    <form action="/post" enctype="multipart/form-data" method="PUT">
 
         @csrf
 
@@ -14,7 +14,7 @@
 
                 <div class="row">
 
-                    <h1>Add New Post</h1>
+                    <h1>Edit Post</h1>
 
                 </div>
 
@@ -26,7 +26,7 @@
                            type="text"
                            class="form-control @error('caption') is-invalid @enderror"
                            name="caption"
-                           value="{{ old('caption') }}"
+                           value="{{ $post->caption }}"
                            autocomplete="caption"
                            autofocus>
 

@@ -8,7 +8,7 @@
 
         <div class="col-3 p-5">
 
-            <img class="rounded-circle" src="https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/97566921_2973768799380412_5562195854791540736_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&amp;_nc_ohc=4e1_P6DaiOAAX8FnC2l&amp;tp=1&amp;oh=86152c1cf136d2692d5cfc85693b8ed4&amp;oe=603C0567">
+            <img class="rounded-circle w-100" src="/storage/{{ $user->profile->image }}">
 
         </div>
 
@@ -18,10 +18,15 @@
 
                 <h1>{{ $user->name }}</h1>
 
-                <a href="{{ route('post.create') }}">Add New Post</a>
+                @can('update', $user->profile)
+                    <a href="{{ route('post.create') }}">Add New Post</a>
+                @endcan
+
             </div>
 
-            <a href="{{ route('profile.edit', $user->id) }}">Edit Profile</a>
+            @can('update', $user->profile)
+                <a href="{{ route('profile.edit', $user->id) }}">Edit Profile</a>
+            @endcan
 
             <div class="d-flex">
                 

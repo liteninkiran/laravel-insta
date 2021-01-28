@@ -27,7 +27,7 @@
                            name="title"
                            type="text"
                            class="form-control @error('title') is-invalid @enderror"
-                           value="{{ $user->profile->title }}"
+                           value="{{ old('title') ?? $user->profile->title }}"
                            autocomplete="title"
                            autofocus>
 
@@ -43,7 +43,7 @@
                 <div class="form-group row">
 
                     <label for="description" class="col-md-4 col-form-label pl-0">Description</label>
-                    <textarea id="description" name="description" rows="4" class="form-control @error('description') is-invalid @enderror">{{ $user->profile->description }}</textarea>
+                    <textarea id="description" name="description" rows="4" class="form-control @error('description') is-invalid @enderror">{{  old('description') ?? $user->profile->description }}</textarea>
 
                     @error('description')
                         <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                            name="url"
                            type="text"
                            class="form-control @error('url') is-invalid @enderror"
-                           value="{{ $user->profile->url }}"
+                           value="{{ old('url') ?? $user->profile->url }}"
                            autocomplete="url"
                            autofocus>
 
@@ -88,9 +88,11 @@
                 </div>
 
                 <!-- SUBMIT -->
-                <div class="row pt-4">
+                <div class="row pt-5 d-flex justify-content-between">
 
                     <button class="btn btn-primary">Save Profile</button>
+
+                    <a href="{{ route('profile.show', $user->id) }}" class="btn btn-secondary">Cancel</a>
 
                 </div>
 

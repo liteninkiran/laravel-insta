@@ -35,7 +35,7 @@ class Profile extends Model
         return $path;
     }
 
-    public function following()
+    public function followers()
     {
         return $this->belongsToMany(User::class);
     }

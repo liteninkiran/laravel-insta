@@ -10,7 +10,9 @@ class ProfilesController extends Controller
 {
     public function index(User $user)
     {
-        return view('profiles.index', ['user' => $user]);
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+
+        return view('profiles.index', compact('user', 'follows'));
     }
 
     public function edit(User $user)
@@ -29,7 +31,7 @@ class ProfilesController extends Controller
         [
             'title' => 'required',
             'description' => 'required',
-            'url' => 'url',
+            'url' => 'nullable|url',
             'image' => '',
         ]);
 
@@ -39,7 +41,7 @@ class ProfilesController extends Controller
             if($request->image)
             {
                 // Store image
-                $imagePath = $request->image->store('storage', 'public');
+                $imagePath = $request->image->store('profile', 'public');
 
                 // Resize with "Intervention"
                 $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
